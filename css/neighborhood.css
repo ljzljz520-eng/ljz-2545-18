@@ -1,0 +1,118 @@
+/* 街区志页面样式 */
+.nb-breadcrumb {
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    color: #718096;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+.nb-breadcrumb a { color: #667eea; text-decoration: none; }
+.nb-breadcrumb .nb-sep { color: #cbd5e0; }
+.nb-breadcrumb .nb-current { color: #2d3748; font-weight: 600; }
+
+.nb-deeplink-banner {
+    background: linear-gradient(90deg, #eef2ff, #faf5ff);
+    border: 1px solid #c3dafe;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    font-size: 0.92rem;
+    color: #4c51bf;
+}
+
+.nb-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+}
+@media (max-width: 768px) {
+    .nb-layout { grid-template-columns: 1fr; }
+}
+
+.nb-panel {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 14px rgba(45, 55, 72, 0.08);
+    margin-bottom: 1.2rem;
+}
+.nb-panel h3 { margin-top: 0; color: #2d3748; }
+
+.nb-tree { display: flex; flex-direction: column; gap: 0.4rem; }
+.nb-tree a {
+    color: #4a5568;
+    text-decoration: none;
+    padding: 0.45rem 0.7rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+.nb-tree a:hover { background: #f0f2ff; color: #5a67d8; }
+.nb-tree a.active { background: linear-gradient(90deg, #667eea, #764ba2); color: #fff; }
+
+.nb-filter { display: block; margin-bottom: 0.8rem; color: #4a5568; font-size: 0.92rem; }
+.nb-filter select { width: 100%; margin-top: 0.3rem; padding: 0.4rem; border-radius: 6px; border: 1px solid #cbd5e0; }
+
+.nb-header h2 {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.3rem;
+}
+.nb-summary { color: #718096; }
+
+.nb-stops { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.nb-stops a {
+    display: block;
+    padding: 0.7rem 0.9rem;
+    border-left: 3px solid #667eea;
+    background: #f7fafc;
+    border-radius: 0 8px 8px 0;
+    color: #2d3748;
+    text-decoration: none;
+}
+.nb-stops a:hover { background: #eef2ff; }
+
+.nb-route-group { margin-bottom: 1rem; }
+.nb-route-group h4 { color: #4a5568; margin: 0.4rem 0; font-size: 0.95rem; }
+.nb-route-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.nb-route-item {
+    padding: 0.6rem 0.9rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4c51bf;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.nb-route-item:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(102, 126, 234, 0.15); }
+.nb-empty { color: #a0aec0; font-size: 0.88rem; }
+.nb-hint { color: #b7791f; font-size: 0.86rem; background: #fffff0; padding: 0.5rem 0.7rem; border-radius: 6px; }
+
+.nb-scrollbox {
+    height: 220px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+}
+.nb-anchor {
+    height: 180px;
+    margin: 0.6rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+.nb-anchor:nth-child(2) { background: linear-gradient(135deg, #f093fb, #764ba2); }
+.nb-anchor:nth-child(3) { background: linear-gradient(135deg, #48bb78, #2b6cb0); }

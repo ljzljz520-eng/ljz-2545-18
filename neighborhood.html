@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>街区志 - 城市漫步</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/neighborhood.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>智慧学习</h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="courses.html">课程中心</a></li>
+                <li><a href="plan.html">学习计划</a></li>
+                <li><a href="resources.html">学习资源</a></li>
+                <li><a href="neighborhood.html" class="active">街区志</a></li>
+                <li><a href="profile.html">个人中心</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 面包屑：与后端权限一致，未公开层不出现 -->
+    <div class="container">
+        <nav class="nb-breadcrumb" id="breadcrumb" aria-label="面包屑">
+            <a href="neighborhood.html">街区志</a>
+        </nav>
+    </div>
+
+    <!-- 深链接横幅：没有历史记录时给出“确定入口”说明与返回选择 -->
+    <div class="container">
+        <div class="nb-deeplink-banner" id="deeplinkBanner" hidden>
+            <span id="deeplinkText"></span>
+            <a class="btn btn-outline" id="deeplinkFallback" href="#" hidden>前往替代入口</a>
+            <button class="btn btn-ghost" id="deeplinkDismiss" type="button">知道了</button>
+        </div>
+    </div>
+
+    <main class="container nb-layout">
+        <!-- 侧栏：章节树 + 筛选（来源章节/筛选状态会被记忆） -->
+        <aside class="nb-sidebar">
+            <div class="nb-panel">
+                <h3>街区章节</h3>
+                <div id="chapterTree" class="nb-tree"></div>
+            </div>
+            <div class="nb-panel">
+                <h3>筛选</h3>
+                <label class="nb-filter">
+                    时代
+                    <select id="eraFilter">
+                        <option value="">全部</option>
+                        <option value="ming-qing">明清</option>
+                        <option value="republic">民国</option>
+                        <option value="modern">近现代</option>
+                    </select>
+                </label>
+                <label class="nb-filter">
+                    <input type="checkbox" id="stopOnly"> 仅看停留点
+                </label>
+            </div>
+        </aside>
+
+        <!-- 主区：历史背景 / 停留点 / 路线入口（主、次分组） -->
+        <section class="nb-main">
+            <header class="nb-header">
+                <h2 id="nbTitle">选择一个街区</h2>
+                <p id="nbSummary" class="nb-summary"></p>
+            </header>
+
+            <article class="nb-panel" id="historyPanel" hidden>
+                <h3>历史背景</h3>
+                <div id="nbHistory"></div>
+            </article>
+
+            <section class="nb-panel" id="stopsPanel" hidden>
+                <h3>停留点</h3>
+                <ul id="stopList" class="nb-stops"></ul>
+            </section>
+
+            <section class="nb-panel" id="routesPanel" hidden>
+                <h3>路线入口</h3>
+                <div class="nb-route-group">
+                    <h4>主要展示入口</h4>
+                    <div id="primaryEntries" class="nb-route-list"></div>
+                </div>
+                <div class="nb-route-group">
+                    <h4>次要入口（跨区路线）</h4>
+                    <div id="secondaryEntries" class="nb-route-list"></div>
+                </div>
+                <p class="nb-hint" id="reviewHint" hidden>
+                    部分关联因街区边界调整正在人工复核，复核期间不按旧中心点自动归属。
+                </p>
+            </section>
+
+            <!-- 锚点演示区 -->
+            <section class="nb-panel" id="anchorDemo" hidden>
+                <h3>街区图卷</h3>
+                <div class="nb-scrollbox">
+                    <div class="nb-anchor" id="anchor-arch">石库门里弄</div>
+                    <div class="nb-anchor" id="anchor-wharf">河滨码头</div>
+                    <div class="nb-anchor" id="anchor-temple">城煌庙市</div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 智慧学习平台 街区志演示 | 章节树 / 路线关联 / 深链接状态恢复</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/neighborhood.js"></script>
+</body>
+</html>

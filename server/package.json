@@ -1,0 +1,14 @@
+{
+  "name": "neighborhood-chapters-server",
+  "version": "1.0.0",
+  "description": "街区章节：章节树 / 路线多对多关联 / 发布版与别名 / 边界复核 的服务层参考实现",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
