@@ -10,6 +10,9 @@ RUN rm -rf /usr/share/nginx/html/*
 # 复制项目文件到nginx目录
 COPY index.html .
 COPY courses.html .
+COPY districts.html .
+COPY district.html .
+COPY route.html .
 COPY plan.html .
 COPY resources.html .
 COPY profile.html .

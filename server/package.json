@@ -1,0 +1,15 @@
+{
+  "name": "smartlearn-district-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "街区章节服务层：章节树、路线关联、复核队列、版本化缓存",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/"
+  },
+  "engines": { "node": ">=18" },
+  "optionalDependencies": {
+    "pg": "^8.12.0"
+  }
+}

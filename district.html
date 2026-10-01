@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>街区详情 - 智慧学习平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/districts.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>智慧学习</h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="courses.html">课程中心</a></li>
+                <li><a href="districts.html" class="active">街区章节</a></li>
+                <li><a href="plan.html">学习计划</a></li>
+                <li><a href="resources.html">学习资源</a></li>
+                <li><a href="profile.html">个人中心</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 返回条：浏览者返回时恢复来源；深链接无历史也有确定入口 -->
+        <div class="return-bar" id="returnBar">
+            <button class="btn-ghost" id="backBtn" type="button">← 返回街区列表</button>
+            <span class="deep-link-hint" id="deepLinkHint" hidden>你从外部链接直接进入，可从下方入口继续浏览</span>
+        </div>
+
+        <!-- 面包屑（后端按权限生成） -->
+        <nav class="breadcrumb" id="breadcrumb" aria-label="面包屑"></nav>
+
+        <!-- 街区标题 -->
+        <section class="page-header" style="padding: 1.5rem 0; margin-top: 0.5rem;">
+            <div class="container">
+                <h1 id="districtName">加载中...</h1>
+                <p id="districtSummary"></p>
+            </div>
+        </section>
+
+        <!-- 历史背景 -->
+        <section>
+            <div class="history-block">
+                <h2>📜 历史背景</h2>
+                <p id="districtHistory"></p>
+            </div>
+        </section>
+
+        <!-- 章节树 -->
+        <section>
+            <h2 class="section-title" style="font-size:1.5rem; text-align:left;">📖 章节</h2>
+            <ul class="chapter-tree" id="chapterTree"></ul>
+        </section>
+
+        <!-- 停留点 -->
+        <section>
+            <h2 class="section-title" style="font-size:1.5rem; text-align:left;">📍 停留点</h2>
+            <div class="stop-list" id="stopList"></div>
+        </section>
+
+        <!-- 路线入口：主要展示入口 / 次要入口 -->
+        <section>
+            <h2 class="section-title" style="font-size:1.5rem; text-align:left;">🗺️ 路线入口</h2>
+            <div id="primaryEntries"></div>
+            <div id="secondaryEntries"></div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>智慧学习平台</h3>
+                    <p>致力于打造最优质的在线学习体验，帮助每个人实现学习目标，提升职业竞争力。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="courses.html">课程中心</a></li>
+                        <li><a href="districts.html">街区章节</a></li>
+                        <li><a href="plan.html">学习计划</a></li>
+                        <li><a href="resources.html">学习资源</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>📧 info@smartlearn.com</li>
+                        <li>📱 400-888-8888</li>
+                        <li>📍 北京市朝阳区科技园</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>关注我们</h4>
+                    <div class="social-links">
+                        <a href="#" title="微信">WeChat</a>
+                        <a href="#" title="微博">Weibo</a>
+                        <a href="#" title="B站">Bilibili</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 智慧学习平台 版权所有 | 京ICP备12345678号 | 网站地图 | 隐私政策</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/district-api.js"></script>
+    <script src="js/district.js"></script>
+</body>
+</html>

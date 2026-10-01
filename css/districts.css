@@ -1,0 +1,421 @@
+/* ======================
+   街区章节模块样式
+   ====================== */
+
+/* ---------- 面包屑 ---------- */
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    color: var(--border-color);
+}
+
+.breadcrumb [aria-current] {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ---------- 街区卡片 ---------- */
+.district-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.district-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.district-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.district-card .card-banner {
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.district-card .card-body {
+    padding: 1.2rem 1.4rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.district-card h3 {
+    font-size: 1.2rem;
+}
+
+.district-card .card-summary {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    flex: 1;
+}
+
+.district-card .card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.district-card .card-link {
+    align-self: flex-start;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.district-card .card-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- 历史背景 ---------- */
+.history-block {
+    background: linear-gradient(135deg, #f7f9ff, #fdf7ff);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 1.8rem;
+    margin: 1.5rem 0;
+}
+
+.history-block h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+}
+
+.history-block p {
+    color: var(--text-dark);
+    line-height: 1.9;
+}
+
+/* ---------- 章节树 ---------- */
+.chapter-tree {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+}
+
+.chapter-tree li {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 0.7rem;
+    background: var(--white);
+}
+
+.chapter-tree li .chapter-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.chapter-tree .chapter-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.chapter-tree .chapter-title:hover {
+    color: var(--primary-color);
+}
+
+.chapter-tree .chapter-summary {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.chapter-tree ul {
+    list-style: none;
+    padding-left: 1.4rem;
+    margin-top: 0.7rem;
+    border-left: 2px dashed var(--border-color);
+}
+
+.status-tag {
+    font-size: 0.72rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: var(--bg-light);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+
+.status-tag.draft {
+    background: #fff7e6;
+    color: #ad6800;
+    border-color: #ffe7ba;
+}
+
+.review-tag {
+    font-size: 0.72rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #fff1f0;
+    color: #cf1322;
+    border: 1px solid #ffa39e;
+}
+
+/* ---------- 停留点 ---------- */
+.stop-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+}
+
+.stop-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    background: var(--white);
+    scroll-margin-top: 90px; /* 滚动锚点避开吸顶导航 */
+}
+
+.stop-card:target {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.18);
+}
+
+.stop-card h4 {
+    margin-bottom: 0.3rem;
+}
+
+.stop-card .stop-chapter {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.stop-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 0.4rem;
+}
+
+/* ---------- 路线入口 ---------- */
+.route-entry {
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.route-entry.primary {
+    border: 2px solid var(--primary-color);
+    background: linear-gradient(135deg, #f6f8ff, #fbf6ff);
+}
+
+.route-entry .entry-role {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.route-entry.secondary .entry-role {
+    background: var(--bg-light);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+
+.route-entry h4 {
+    margin: 0.3rem 0;
+}
+
+.route-entry .entry-note {
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+.route-entry.withdrawn {
+    opacity: 0.75;
+    background: var(--bg-light);
+}
+
+/* ---------- 路线详情 ---------- */
+.route-stop-flow {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.route-stop-flow::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.route-stop-flow li {
+    position: relative;
+    padding: 0.7rem 0 0.7rem 3rem;
+}
+
+.route-stop-flow .seq {
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.route-stop-flow h4 {
+    margin-bottom: 0.2rem;
+}
+
+.route-stop-flow p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.district-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    font-size: 0.88rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    margin: 0 0.5rem 0.5rem 0;
+}
+
+.district-chip.primary {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #eef1ff, #f7efff);
+    font-weight: 600;
+}
+
+.district-chip .role-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+/* ---------- 返回条 / 深链接确定入口 ---------- */
+.return-bar {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.8rem 0 0;
+}
+
+.return-bar .btn-ghost {
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-dark);
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.return-bar .btn-ghost:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.deep-link-hint {
+    font-size: 0.82rem;
+    color: var(--text-light);
+}
+
+/* ---------- 撤回提示 ---------- */
+.gone-banner {
+    background: #fff7e6;
+    border: 1px solid #ffe7ba;
+    color: #ad6800;
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+}
+
+.gone-banner a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ---------- 筛选栏（复用 course-filter 风格） ---------- */
+.district-filter {
+    padding: 1.5rem 0 0.5rem;
+}
+
+.district-filter .filter-tabs {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-light);
+    padding: 3rem 0;
+}
+
+@media (max-width: 768px) {
+    .route-entry {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

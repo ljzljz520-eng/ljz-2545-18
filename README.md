@@ -33,6 +33,9 @@ label-2545/
 ├── 【网页文件】
 ├── index.html              # 首页 - Banner轮播、特色功能、热门课程
 ├── courses.html            # 课程中心 - 课程筛选、课程列表
+├── districts.html         # 街区章节 - 街区列表、筛选搜索
+├── district.html          # 街区详情 - 历史背景、章节树、停留点、路线入口
+├── route.html             # 路线详情 - 跨区路线、主/次入口、停留点动线
 ├── plan.html              # 学习计划 - 计划生成器、学习路径
 ├── resources.html         # 学习资源 - 工具、网站、书籍、视频
 ├── profile.html           # 个人中心 - 学习概览、进度、成就
@@ -43,8 +46,24 @@ label-2545/
 ├── 【资源文件】
 ├── css/
 │   └── style.css          # 全局样式表（约1200行）
+│   └── districts.css      # 街区章节模块样式
 ├── js/
 │   └── script.js          # 全局JavaScript（约600行）
+│   └── district-api.js    # 街区模块共享客户端（防乱序/状态恢复）
+│   └── districts.js       # 街区列表页逻辑
+│   └── district.js        # 街区详情页逻辑
+│   └── route.js           # 路线详情页逻辑
+│
+├── 【服务层】
+├── server/
+│   ├── src/server.js      # HTTP 服务（静态 + API）
+│   ├── src/services.js    # 业务逻辑：章节树、路线关联、复核、拆分
+│   ├── src/store.js       # 数据访问层（内存实现 + 种子数据）
+│   ├── src/pg-store.js    # 数据访问层（PostgreSQL 实现）
+│   ├── src/cache.js       # 版本化缓存（防乱序回包）
+│   ├── sql/schema.sql     # PG 结构：发布版、别名、迁移关系
+│   └── test/              # 验收测试（node:test）
+└── docs/街区章节设计.md    # 街区模块设计文档
 │
 ├── 【Docker配置】
 ├── Dockerfile             # Docker镜像配置
@@ -109,7 +128,22 @@ docker-compose up -d --build
 - **镜像大小**：约50MB（基于 nginx:alpine）
 - **详细文档**：查看 [DOCKER.md](DOCKER.md)
 
-### 方法三：使用本地服务器
+### 方法三：启动街区章节服务层（API + 静态页）
+
+```bash
+# 内存模式（含种子数据，无需数据库）
+cd server && node src/server.js
+# 打开 http://localhost:3000/districts.html
+
+# PostgreSQL 模式（PG 储存发布版、别名和迁移关系）
+cd server && npm i pg
+DATABASE_URL=postgres://user:pass@localhost:5432/db node src/server.js
+
+# 运行验收测试（并发移动/删除引用/跨区拆分/缓存乱序/权限泄漏等 16 个场景）
+cd server && npm test
+```
+
+### 方法四：使用本地服务器
 
 ```bash
 # 使用Python
@@ -163,7 +197,15 @@ npx http-server
 - **发展历程**：时间轴展示平台发展
 - **合作伙伴**：6家合作企业
 
-### 7. 联系我们（contact.html）
+### 7. 街区章节（districts.html / district.html / route.html）
+- **街区列表**：主题筛选 + 搜索；筛选与滚动位置在返回时恢复，URL 参数支持深链接
+- **街区详情**：历史背景、章节树、停留点、路线入口（主要展示入口 / 次要入口）
+- **路线详情**：跨区路线动线、关联街区主/次入口；撤回路线展示替代指向
+- **服务层**：章节树维护（层级循环检查、乐观锁并发控制）、路线-街区独立关联表、
+  边界修改复核队列、跨区路线拆分、版本化缓存防乱序
+- **权限**：面包屑由后端按权限生成；未公开章节不通过路线关联接口泄漏
+
+### 8. 联系我们（contact.html）
 - **联系方式**：邮箱、电话、地址、在线客服
 - **联系表单**：包含姓名、邮箱、电话、主题、消息（带验证）
 - **FAQ**：6个常见问题（手风琴效果）

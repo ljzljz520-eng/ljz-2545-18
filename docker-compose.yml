@@ -9,10 +9,15 @@ services:
     ports:
       - "8080:80"
     restart: unless-stopped
+    depends_on:
+      - server
     volumes:
       # 开发模式：挂载本地文件，修改后自动生效
       - ./index.html:/usr/share/nginx/html/index.html
       - ./courses.html:/usr/share/nginx/html/courses.html
+      - ./districts.html:/usr/share/nginx/html/districts.html
+      - ./district.html:/usr/share/nginx/html/district.html
+      - ./route.html:/usr/share/nginx/html/route.html
       - ./plan.html:/usr/share/nginx/html/plan.html
       - ./resources.html:/usr/share/nginx/html/resources.html
       - ./profile.html:/usr/share/nginx/html/profile.html
@@ -25,6 +30,45 @@ services:
       - smartlearn-network
     environment:
       - TZ=Asia/Shanghai
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: smartlearn-server
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      - PORT=3000
+      # 配置后使用 PostgreSQL；留空则内存模式（含种子数据）
+      - DATABASE_URL=postgres://smartlearn:smartlearn@db:5432/smartlearn
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - smartlearn-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: smartlearn-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=smartlearn
+      - POSTGRES_PASSWORD=smartlearn
+      - POSTGRES_DB=smartlearn
+      - TZ=Asia/Shanghai
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartlearn -d smartlearn"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - smartlearn-network
+
+volumes:
+  pgdata:
 
 networks:
   smartlearn-network:
